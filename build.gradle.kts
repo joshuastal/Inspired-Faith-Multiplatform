@@ -8,5 +8,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
     // BEGIN ADDITIONS
     alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.google.services) apply false
     // END ADDITIONS
 }

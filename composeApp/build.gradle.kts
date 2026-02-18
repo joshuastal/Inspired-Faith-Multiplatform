@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     // BEGIN ADDITIONS
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.google.services)
     // END ADDITIONS
 }
 
@@ -52,6 +53,7 @@ kotlin {
             implementation(libs.kermit)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.firebase.firestore)
             // END ADDITIONS
         }
 
