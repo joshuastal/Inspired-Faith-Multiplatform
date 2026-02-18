@@ -29,6 +29,10 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
+            // BEGIN ADDITIONS
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.kotlinx.coroutines.android)
+            // END ADDITIONS
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -39,9 +43,16 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            // BEGIN ADDITIONS
+            implementation(libs.ktor.client.core)
+            implementation(libs.kotlinx.coroutines.core)
+            // END ADDITIONS
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            // BEGIN ADDITIONS
+            implementation(libs.ktor.client.darwin)
+            // END ADDITIONS
         }
     }
 }
