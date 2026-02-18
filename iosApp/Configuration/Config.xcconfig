@@ -1,0 +1,7 @@
+TEAM_ID=
+
+PRODUCT_NAME=InspiredFaithMultiplatform
+PRODUCT_BUNDLE_IDENTIFIER=com.myapp.inspiredfaithmultiplatform.InspiredFaithMultiplatform$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0
