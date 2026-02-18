@@ -6,6 +6,9 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    // BEGIN ADDITIONS
+    alias(libs.plugins.kotlin.serialization)
+    // END ADDITIONS
 }
 
 kotlin {
@@ -46,6 +49,9 @@ kotlin {
             // BEGIN ADDITIONS
             implementation(libs.ktor.client.core)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kermit)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
             // END ADDITIONS
         }
         commonTest.dependencies {

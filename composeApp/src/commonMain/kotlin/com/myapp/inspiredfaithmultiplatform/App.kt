@@ -1,23 +1,20 @@
 package com.myapp.inspiredfaithmultiplatform
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import org.jetbrains.compose.resources.painterResource
+import co.touchlab.kermit.Logger
+import com.myapp.inspiredfaithmultiplatform.CalendarAPI.CalendarAPI
 
-import inspiredfaithmultiplatform.composeapp.generated.resources.Res
-import inspiredfaithmultiplatform.composeapp.generated.resources.compose_multiplatform
+
+import io.ktor.client.statement.bodyAsText
 
 @Composable
 @Preview
@@ -33,8 +30,16 @@ fun App() {
         ) {
             var text by remember { mutableStateOf("Loading") }
             LaunchedEffect(true) {
-                text = try {
-                    Greeting().greet()
+                try {
+                    val result = CalendarAPI().callCalendar()
+
+                    if (result.status.value.toString() == "200") {
+                        val calendarData = CalendarAPI().convertToCalendarDay(result)
+
+                        text = "Today is: ${calendarData.summary_title}"
+
+                        Logger.d ("Calendar") { text }
+                    } else { text = "Failed: ${result.status.value}" }
                 } catch (e: Exception) {
                     e.message ?: "error"
                 }
