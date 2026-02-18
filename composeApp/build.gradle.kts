@@ -54,11 +54,15 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             // END ADDITIONS
         }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
+
+        iosMain.dependencies {
             // BEGIN ADDITIONS
             implementation(libs.ktor.client.darwin)
             // END ADDITIONS
+        }
+
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
         }
     }
 }

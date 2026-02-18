@@ -13,9 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import co.touchlab.kermit.Logger
 import com.myapp.inspiredfaithmultiplatform.CalendarAPI.CalendarAPI
 
-
-import io.ktor.client.statement.bodyAsText
-
 @Composable
 @Preview
 fun App() {
@@ -31,7 +28,7 @@ fun App() {
             var text by remember { mutableStateOf("Loading") }
             LaunchedEffect(true) {
                 try {
-                    val result = CalendarAPI().callCalendar()
+                    val result = CalendarAPI().orthoInfoToday()
 
                     if (result.status.value.toString() == "200") {
                         val calendarData = CalendarAPI().convertToCalendarDay(result)
