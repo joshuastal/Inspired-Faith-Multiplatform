@@ -23,8 +23,11 @@ class CalendarAPI {
     }
 
     suspend fun orthoInfoToday(): HttpResponse {
-        val response = client.get("https://orthocal.info/api/gregorian")
-        return response
+        return client.get("https://orthocal.info/api/gregorian")
+    }
+
+    suspend fun orthoInfoChosen(year: Int, month: Int, day: Int): HttpResponse {
+        return client.get("https://orthocal.info/api/gregorian/${year}/${month}/${day}/")
     }
 
     suspend fun convertToCalendarDay(response: HttpResponse): CalendarDay {
