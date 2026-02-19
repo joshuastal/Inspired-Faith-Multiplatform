@@ -1,5 +1,8 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+// BEGIN ADDITIONS
+
+// END ADDITIONS
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -26,9 +29,12 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
+            linkerOpts("-framework", "FirebaseCore")
+            linkerOpts("-framework", "FirebaseFirestore")
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
